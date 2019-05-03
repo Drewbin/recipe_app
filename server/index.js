@@ -8,7 +8,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 
-const controller = require('./controller');
+const controller = require('./app_controller');
 
 const app = express();
 
@@ -54,7 +54,7 @@ passport.use('login', new LocalStrategy({
 
     db.users.find({ email }).then(userResults => {
         if (userResults.length === 0) {
-            return done(JSON.stringify({ message: 'Username or password is invalid' }));
+            return done( 'Username or password is invalid' );
         };
 
         const user = userResults[0];
@@ -62,7 +62,7 @@ passport.use('login', new LocalStrategy({
         const storedPassword = user.password;
 
         if(!bcrypt.compareSync(password, storedPassword)) {
-            return done(JSON.stringify({ message: 'Username or password is incorrect.' }));
+            return done( 'Username or password is incorrect.' );
         };
         
         delete user.password;
@@ -70,7 +70,7 @@ passport.use('login', new LocalStrategy({
         done(null, userResults[0]);
     }).catch(err => {
         console.error(err);
-        done(JSON.stringify({ message: 'Unknown error occurred.'}));
+        done( 'Unknown error occurred.' );
     });
 }));
 
@@ -104,10 +104,6 @@ app.post('/auth/login', passport.authenticate('login'), (req, res) => {
 app.get('/auth/logout', (req, res) => {
     req.logout();
     res.sendStatus(200);
-});
-
-app.get('/api/me', (req, res) => {
-    res.send(req.user);
 });
 
 
