@@ -1,10 +1,10 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Dashboard from './src/components/Dashboard/Dashboard';
-import Login from './src/components/Login/Login';
-import Register from './src/components/Register/Register';
-import RecipeList from './src/components/RecipeList/RecipeList';
-import RecipeDetail from './src/components/RecipeDetail/RecipeDetail';
+import Dashboard from './components/Dashboard/Dashboard';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import RecipeList from './components/RecipeList/RecipeList';
+import RecipeDetail from './components/RecipeDetail/RecipeDetail';
 
 
 export default (
