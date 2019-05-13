@@ -7,6 +7,7 @@ CREATE TABLE recipes (
     nutrition TEXT,
     image TEXT,
     ingredients TEXT,
+    instructions TEXT,
     time INT,
     link TEXT
 
@@ -18,3 +19,5 @@ Nutrition = digest
 ingredients = ingredientLines
 Name = label
 Link = url
+
+*/

@@ -93,15 +93,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Auth endpoints
-app.post('/auth/register', passport.authenticate('register'), (req,res) => {
+app.post('/register', passport.authenticate('register'), (req,res) => {
     res.send({ message: 'Successfully registered', user: req.user });
 });
 
-app.post('/auth/login', passport.authenticate('login'), (req, res) => {
+app.post('/login', passport.authenticate('login'), (req, res) => {
     res.send({ message: 'Login successful.', user: req.user });
 });
 
-app.get('/auth/logout', (req, res) => {
+app.get('/logout', (req, res) => {
     req.logout();
     res.sendStatus(200);
 });
