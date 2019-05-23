@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import { login } from '../../ducks/reducer';
+
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -25,8 +27,10 @@ class Login extends Component {
             loading: true,
         });
 
+        const { email, password } = this.state;
+
         axios.post('/login', { email, password }).then(res => {
-            this.props.dispatch({ type: Login, payload: response.data.user });
+            this.props.dispatch({ type: login, payload: res.data.user });
             this.props.history.push('/dashboard')
         }).catch(err => {
             console.error(err);

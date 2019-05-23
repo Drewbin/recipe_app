@@ -73,3 +73,16 @@ export function clear() {
     }
 };
 
+export function login( userInfo ) {
+    return {
+        type: LOGIN,
+        payload: userInfo,
+    }
+};
+
+export function logout() {
+    return {
+        type: LOGOUT,
+    }
+};
+
